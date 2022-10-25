@@ -1,11 +1,11 @@
 # TestHfHot
 
 This project just tries to move rows in a `Handsontable` while upating the `Hyperfomula` instance attached to it. So, objectives:
-* **Move 1 (or more if possible) row** in the displyed `Handsontable` table **to another row**.
+* **Move 1 (or more if possible) row** in the displayed `Handsontable` table **to another row**.
 * **Before the `Handsontable` starts rendering**, the `Hyperfomula` instance should be updated already with the **formulas recalculated**.
-* **The re-rendered `Handsontable` shoulnd't have any row wrongly displayed**.
+* **The re-rendered `Handsontable` shouldn't have any row wrongly displayed**.
 
-Must work in `Chorme` and `Microsoft Edge`* (if fworks in `Mozilla Firefox` bonus points)
+Must work in `Google Chorme` and `Microsoft Edge`* (if fworks in `Mozilla Firefox` bonus points)
 
 ## Terminilogy
 * **Show =>** What the end user sees, *when entering* the cell to edit.
@@ -40,6 +40,7 @@ None of the criteria above is met today 2022-10-25. What we see is:
 * If we use the `afterRowMove` hook from `Handsontable`, then MANUALLY we can use `moveRows` functionality from `Hyperfomula`. We see 2 problems here:
     * The expected output `ExportedChange[]` is empty.
     * After the re-render finises, we see that:
+        ![Fail render](docu/chrome_moved-row-1-to-the-end.png)
         * Some formulas now shows the right formula, but it remains un-calculated (the displayed value is the formula, not the calculated result).
         * Some formulas shows a wrong formula, but they display OK.
 
@@ -55,12 +56,18 @@ There is a single component, which is placed on the root URL.
 
 Will be several tables printed but they are product of an `ngFor` so will explain one.
 
+![Points explanation](docu/chrome_explain.png)
+
 1. `# Move => 0` ==> The table below will be the one that.
 2. The rellevant data taht is left AFTER the move. If the move is still pending, `LASTEST` will be displayed.
     * `changesList ==> "LASTEST"` ==> The `moveRows` result from `Hyperfomula`.
     * `afterRowMoveInputs ==> "LASTEST"` ==> The `afterRowMove` inputs from `Handsontable`.
 3. The `Handsontable` instance itself.
 4. How many elements are in the "Array `Handsontable` instances".
+
+After moving `row 1` to `after row 5` will see...
+
+![After moving row 1 to after 5](docu/chrome_explain_move1-to5.png)
 
 ## How we arrived at that point...
 
