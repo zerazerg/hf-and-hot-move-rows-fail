@@ -39,8 +39,8 @@ None of the criteria above is met today 2022-10-25. What we see is:
     * The table displays OK after the re-render, but the shown formulas are not updated. This makes it **unconsistent with what the end user is seeing**.
 * If we use the `afterRowMove` hook from `Handsontable`, then MANUALLY we can use `moveRows` functionality from `Hyperfomula`. We see 2 problems here:
     * The expected output `ExportedChange[]` is empty.
-    * After the re-render finises, we see that:
-    
+    * After the re-render finishes, we see that:
+
         ![Fail render](docu/chrome_moved-row-1-to-the-end.png)
 
         * Some formulas now shows the right formula, but it remains un-calculated (the displayed value is the formula, not the calculated result).
