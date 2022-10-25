@@ -1,0 +1,20 @@
+<div>
+
+  <ng-container *ngFor="let hotSettings of hotSettingsList; index as i; last as isLast">
+    <span>{{"# Move => " + i}}</span>
+    <br>
+    <span>{{"changesList ==> " + ((changesList[i] || "LASTEST") | json)}}</span>
+    <br>
+    <span>{{"afterRowMoveInputs ==> " + ((afterRowMoveInputs[i] || "LASTEST") | json)}}</span>
+    
+    <!-- <hot-table *ngIf="isLast" -->
+    <hot-table
+        [settings]="hotSettings" 
+        [hotId]="hotSettings.formulas.sheetName">
+    </hot-table>
+    <br>
+  </ng-container>
+
+  <p>{{"Elms in array => " + hotSettingsList.length + " /// moves done => " + (hotSettingsList.length-1)}}</p>
+  
+</div>
