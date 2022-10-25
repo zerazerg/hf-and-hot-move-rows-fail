@@ -1,11 +1,11 @@
 # TestHfHot
 
-This project just tries to move rows in a `Handsontable` while upating the `Hyperfomula` instance attached to it. So, objectives:
+This project aims to move rows in a `Handsontable` while updating the `Hyperfomula` instance attached to it. Therefore, it should work as follow:
 * **Move 1 (or more if possible) row** in the displayed `Handsontable` table **to another row**.
 * **Before the `Handsontable` starts rendering**, the `Hyperfomula` instance should be updated already with the **formulas recalculated**.
 * **The re-rendered `Handsontable` shouldn't have any row wrongly displayed**.
 
-Must work in `Google Chorme` and `Microsoft Edge`* (if fworks in `Mozilla Firefox` bonus points)
+It has to work in `Google Chorme` and `Microsoft Edge` (if works in `Mozilla Firefox` also better)
 
 ## Terminilogy
 * **Show =>** What the end user sees, *when entering* the cell to edit.
@@ -24,7 +24,7 @@ Must work in `Google Chorme` and `Microsoft Edge`* (if fworks in `Mozilla Firefo
 ### Notes
 * The **cell B2 displays** the content of **B1**, which is `0123456`.
 * The **cell C2 displays** the content of **B2** which is the content of **B1**... but it **removes the trainig zeros**, so it shows `123456`.
-    * The trailing zeros removal is not an issue in this topic since we just want to check that the formaula chains work.
+    * The trailing zeros removal is not an issue in this topic since we just want to check that the formula chains work.
 * The **cell B3 displays** the length content of **B2** which is the content of **B1**... but it **removes the trainig zeros**, so it shows `6`.
 * The **cell B4 displays** concatenation of **A1** and **B1** (again without zeroes) with an `_` so it shows `ID_123456`.
 
@@ -32,7 +32,7 @@ Must work in `Google Chorme` and `Microsoft Edge`* (if fworks in `Mozilla Firefo
 + It is expected to keep displaying these values while updating the formula correctly while moving.
 ```
 
-## Problems
+## Issues
 
 None of the criteria above is met today 2022-10-25. What we see is:
 * **Into `afterRowMove` hook `Handsontable` the `Hyperfomula` instance does not have move informed**. This causes:
@@ -48,15 +48,15 @@ None of the criteria above is met today 2022-10-25. What we see is:
 
 ## Explaining the showroom
 
-If not installed the Angular Cli, downloat it.
+Please install Angular Cli to be able to follow this part.
 
 To run it just type on the terminal `npm install` on the root folder. Then, `ng serve` ==> The project will run at `http://localhost:4200`.
 
 There is a single component, which is placed on the root URL.
 
-### What will you see
+### What you will see?
 
-Will be several tables printed but they are product of an `ngFor` so will explain one.
+Several tables will be printed here but they are product of a `ngFor`. Let's explain one in detail:
 
 ![Points explanation](docu/chrome_explain.png)
 
@@ -78,10 +78,6 @@ We first tried to simpply use the `afterRowMove` hook from `Handsontable`, but t
 Then, we used the `moveRows` functionality from `Hyperfomula`, but then re-render failed.
 
 Finally we tried to just crete multiple `Handsontable` tables, but in the real project it causes major troublesome making it impossible to fit in.
-
-## Disclaimer
-
-If the bug is caused by a wrongdoing, We have made the most of me from the poor avaible documentation, and we hope that in that project we find a correct and acceptable solution.
 
 # Automatic README text from Angular CLI
 
